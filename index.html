@@ -3,29 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>คณิตศาสตร์ by ครูเมฆ</title>
-  <meta name="theme-color" content="#0f766e">
+  <title>คณิตศาสตร์ By ครูเมฆ</title>
+  <meta name="theme-color" content="#334155">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="คณิตครูเมฆ">
-  <link rel="manifest" href="./manifest.json">
-  <link rel="apple-touch-icon" href="./icon-512.png">
-  <link rel="icon" type="image/png" href="./icon-512.png">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="คณิตฯ ครูเมฆ">
+  <link rel="manifest" href="./manifest.json?v=202611232246">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=202611232246">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=202611232246">
+  <link rel="shortcut icon" href="./apple-touch-icon.png?v=202611232246">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png?v=202611232246">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=202611232246">
+  <link rel="apple-touch-icon" sizes="152x152" href="./apple-touch-icon.png?v=202611232246">
+  <link rel="apple-touch-icon" sizes="120x120" href="./apple-touch-icon.png?v=202611232246">
   <style>
-    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #f8fafc; }
-    iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: none; }
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #334155; }
+    #appFrame { position: fixed; inset: 0; width: 100%; height: 100dvh; border: 0; display: block; background: #f8fafc; }
   </style>
 </head>
 <body>
-  <iframe id="appFrame" allow="camera; microphone; clipboard-read; clipboard-write; fullscreen" allowfullscreen></iframe>
+  <iframe id="appFrame" src="https://script.google.com/macros/s/AKfycbyCy9gZg4--Qa6v-wwVP72kTsd_lgysonVK98iRR9w0CvRaq7tOxOlOwFcziqCT5eW4/exec" allow="camera; microphone; fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
   <script>
-    const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyCy9gZg4--Qa6v-wwVP72kTsd_lgysonVK98iRR9w0CvRaq7tOxOlOwFcziqCT5eW4/exec";
-    const qs = window.location.search || "";
-    document.getElementById("appFrame").src = GAS_WEB_APP_URL + qs;
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("./sw.js").catch(() => {});
-    }
+    (function() {
+      var qs = window.location.search || "";
+      if (qs) {
+        var f = document.getElementById("appFrame");
+        f.src = "https://script.google.com/macros/s/AKfycbyCy9gZg4--Qa6v-wwVP72kTsd_lgysonVK98iRR9w0CvRaq7tOxOlOwFcziqCT5eW4/exec" + qs;
+      }
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker.register("./sw.js?v=202611232246").catch(function() {});
+        });
+      }
+    })();
   </script>
 </body>
 </html>
